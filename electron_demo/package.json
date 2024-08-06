@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "electron-devtools-installer": "^3.2.0",
+    "node-cmd": "^5.0.0",
     "os": "^0.1.2",
     "vue": "^3.4.31"
   },
