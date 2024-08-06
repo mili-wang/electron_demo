@@ -23,4 +23,12 @@ export default defineConfig({
     emptyOutDir: false, // 默认情况下，若 outDir 在 root 目录下，则 Vite 会在构建时清空该目录
     outDir: "dist-electron"
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:8000', // 实际请求地址
+        changeOrigin: true
+      },
+    },
+  }
 });

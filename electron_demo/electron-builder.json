@@ -4,11 +4,22 @@
   "productName": "electronDemo",
   "copyright": "Copyright © 2022 electron_demo",
   "directories": {
+    "buildResources": "resources",
     "output": "release/${version}"
   },
   "files": [
     "dist",
-    "dist-electron"
+    "dist-electron",
+    "backend/manage.exe"
+  ],
+  "extraResources": [
+    {
+      "from": "backend/manage.exe",
+      "to": ".",
+      "filter": [
+        "**/*.exe"
+      ]
+    }
   ],
   "mac": {
     "target": [
