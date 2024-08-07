@@ -1,22 +1,24 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { getUsers } from "@/api/test";
 
 const state = reactive({
   list: []
 }) as any;
 
 async function getData() {
-  await fetch('http://localhost:8000/api/users', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  }).then(response => {
-    return response.json();
-  }).then(resp => {
-    state.list = resp.data;
-    console.log(resp, state.list, 7777)
-  });
+  try {
+    getUsers().then((resp: { data: any; }) => {
+      state.list = resp.data;
+      console.log(resp, state.list, 7777)
+    }).catch((error: any) => {
+      console.error('Promise 被拒绝:', error);
+    });;
+  } catch (error) {
+    console.error(error);
+  }
+
+  
 }
 </script>
 

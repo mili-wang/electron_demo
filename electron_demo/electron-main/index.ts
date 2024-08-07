@@ -52,6 +52,16 @@ const createWindow = () => {
     console.error(`stderr: ${data}`);
   });
 
+  manageProcess.on('exit', (code) => {
+    console.log(`manage.exe exited with code ${code}`);
+    // 如果进程正常退出，通常 code 为 0
+    if (code === 0) {
+      console.log('manage.exe started successfully');
+    } else {
+      console.error('manage.exe did not start successfully');
+    }
+  });
+
   manageProcess.on('close', (code) => {
     console.log(`manage.exe exited with code ${code}`);
   });
